@@ -25,5 +25,6 @@
     <div class="item2">
     </div>
 <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLiannes-haarstyling-101793808179858&tabs=timeline%2C%20messages&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" ></iframe>
-        @endsection
+</div>
+@endsection
 
