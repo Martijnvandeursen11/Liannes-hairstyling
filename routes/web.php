@@ -14,3 +14,5 @@
 Route::get('/', 'PagesController@index');
 Route::get('/producten', 'PagesController@producten');
 Route::get('/galerij', 'PagesController@galerij');
+
+Route::resource('producten', 'productController');

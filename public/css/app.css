@@ -165,7 +165,7 @@ header {
 .bannertext {
     text-align: center;
     line-height: 60px;
-    color: #684bc9;
+    color: #413342;
     font-weight: bold;
     font-size: 27px;
     margin-top: 11vh;
@@ -173,35 +173,41 @@ header {
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 50px;
-    padding: 20px;
-    margin: 0 200;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "welkom facebook"
+    ;
+    grid-gap: 0px 50px;
+    margin: 50px 200px;
     align-items: center;
     justify-items: center;
 }
 
-.grid-container>div {
-    left: auto;
-    right: auto;
-    place-items: center;
-    text-align: left;
-    margin: 0px 20px;
-    font-size: 20px;
-    align-items: center;
-    justify-items: center;
+@media screen and (max-width: 40em) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "welkom facebook"
+            "welkom facebook"
+            "welkom facebook"
+        ;
+        grid-gap: 20px;
+        margin: 50px 50px;
+        align-items: center;
+        justify-items: center;
+    }
 }
 
 .item1 {
-    grid-row: 1 / span 4;
-    margin-top: 75px;
+    grid-area: welkom;
 }
 
 .item2 {
-    grid-row: 1 / span 4;
-    margin-top: 75px;
-
+    grid-area: facebook;
+    justify-content: center;
 }
+
 
 .item1 h2 {
     color: #4C4CA0;
@@ -213,3 +219,47 @@ header {
     color: #444444;
     max-width: 800;
 }
+
+.fbframe {
+    margin-top: 60px !important;
+}
+
+/* Overgang van header naar pagina */
+.overgang-shape {
+    transform: rotate(180deg);
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    direction: ltr;
+}
+
+.overgang-shape svg {
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 160px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.overgang-shape-bottom {
+    bottom: -1px;
+}
+
+.svg-shape-fill {
+    fill: #fff;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+

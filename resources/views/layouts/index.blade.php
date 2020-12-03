@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+        <!--JQuery-->  
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>  
+    <!--Floating WhatsApp css-->  
+    <link rel="stylesheet" href="floating-wpp.min.css">  
+    <!--Floating WhatsApp javascript-->  
+    <script type="text/javascript" src="floating-wpp.min.js"></script>
+
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v9.0" nonce="lwnCQF63"></script>    
     <meta charset="UTF-8">
@@ -22,10 +29,11 @@
                 <li><a href="/galerij">Galerij</a></li>
             </ul>
         </nav>
-        <a class="cta" href="#">Contact</a>
+        <a class="cta" href="#">Login</a>
         <p class="menu cta">Menu</p>
     </header-transparent>
 </body>
+    @include('inc.messages')
     @yield('content')
 
 <div class="footercss">
@@ -62,11 +70,11 @@
             <ul class="info">
                 <li>
                     <span><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <p><a href="tel:0625365788">+31 6 253 657 88</a><br></p>
+                    <p><a href="tel:0619827034">+31 6 19827034</a><br></p>
                 </li>
                 <li>
                     <span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
-                    <p><a href="#">Klik hier</a></p>
+                    <p><a href="https://wa.me/31625365788?text=djwia%0A%0AHello">Klik hier</a></p>
                 </li>
             </ul>
         </div>
