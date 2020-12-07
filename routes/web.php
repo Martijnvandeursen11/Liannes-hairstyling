@@ -14,7 +14,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/producten', 'PagesController@producten');
 Route::get('/galerij', 'PagesController@galerij');
-Route::get('/contact', 'PagesController@galerij');
+Route::get('/contact', 'PagesController@contact');
 
 Route::resource('producten', 'productController');
 
