@@ -19,4 +19,8 @@ class PagesController extends Controller
     public function galerij(){
         return view('Pages.galerij');
     }
+
+    public function contact(){
+        return view('Pages.contact');
+    }
 }

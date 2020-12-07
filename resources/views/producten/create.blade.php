@@ -1,8 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.index')
+<div class="banner2" >
 
 @section('content')
-    <h1>Maak een nieuw product</h1>
-        {!! Form::open(['action' => 'productController@store', 'method' => 'POST']) !!}
+<div class="bannertext2">
+    <h1>  <span style="color: #4c4ca0">Nieuw product</h1></span>
+</div>
+</div>
+<div class="page-container">
+        {!! Form::open(['action' => 'productController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{form::label('product_naam', 'Product naam:')}}
                 {{form::text('Naam', '', ['class' => 'form-control', 'placeholder' => 'Product naam'])}}
@@ -17,7 +22,7 @@
             </div>
             <div class="form-group">
                 {{form::label('product_categorie', 'Product categorie:')}}
-                {{Form::select('Categorie', ['H' => 'Haarstyling', 'V' => 'Verzorgingsproducten'])}}
+                {{Form::select('Categorie', ['Haarstyling' => 'Haarstyling', 'Verzorgingsproducten' => 'Verzorgingsproducten'])}}
             </div>
             <div class="form-group">
                 {{form::label('product_foto', 'Product Afbeelding:')}}
@@ -25,4 +30,5 @@
             </div>
             {{Form::submit('Toevoegen', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
+        </div>
 @endsection

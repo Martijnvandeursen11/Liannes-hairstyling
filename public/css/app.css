@@ -162,6 +162,13 @@ header {
     background-size: cover;
 }
 
+.banner2 {
+    background-image: url("../assets/background1.jpg");
+    width: auto;
+    height: 65%;
+    background-size: cover;
+}
+
 .bannertext {
     text-align: center;
     line-height: 60px;
@@ -169,6 +176,15 @@ header {
     font-weight: bold;
     font-size: 27px;
     margin-top: 11vh;
+}
+
+.bannertext2 {
+    text-align: center;
+    line-height: 60px;
+    color: #413342;
+    font-weight: bold;
+    font-size: 27px;
+    margin-top: 10vh;
 }
 
 .grid-container {
@@ -182,6 +198,38 @@ header {
     align-items: center;
     justify-items: center;
 }
+
+.page-container {
+    margin: 100px 175px 100px 175px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-container2 {
+    margin: 0px 175px 100px 175px;
+    display: flex;
+    justify-content: center;
+}
+
+.product_card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: inline-block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    margin: 20px;
+    max-width: 225px;
+}
+
 
 @media screen and (max-width: 40em) {
     .grid-container {
@@ -254,6 +302,10 @@ svg:not(:root) {
     bottom: -1px;
 }
 
+.overgang-shape-bottom2 {
+    bottom: -10px;
+}
+
 .svg-shape-fill {
     fill: #fff;
     -webkit-transform-origin: center;
@@ -262,4 +314,3 @@ svg:not(:root) {
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
-

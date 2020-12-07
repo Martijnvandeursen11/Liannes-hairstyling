@@ -14,5 +14,10 @@
 Route::get('/', 'PagesController@index');
 Route::get('/producten', 'PagesController@producten');
 Route::get('/galerij', 'PagesController@galerij');
+Route::get('/contact', 'PagesController@galerij');
 
 Route::resource('producten', 'productController');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');

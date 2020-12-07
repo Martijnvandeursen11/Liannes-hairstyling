@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\productModel;
+use Auth;
 
 class productController extends Controller
 {
@@ -26,7 +27,9 @@ class productController extends Controller
      */
     public function create()
     {
-        return view('producten.create');
+        if(Auth::check())
+         return view('producten.create');
+        return redirect('/producten')-> with('error', 'Niet bevoegd');
     }
 
     /**
@@ -42,14 +45,25 @@ class productController extends Controller
             'Omschrijving' => 'required',
             'Prijs' => 'required',
             'Categorie' => 'required',
-            'Foto' => 'required'
+            'Foto' => 'image|nullable|max:1999'
         ]); 
+
+        // Foto upload
+        if($request->hasFile('Foto')){
+            $fileNameWithExt = $request->file('Foto')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('Foto')-> getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('Foto')->storeAs('public/cover_images', $fileNameToStore);
+        } else{
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         // Nieuw product toevoegen
         $producten = new productModel;
         $producten->product_naam = $request->input('Naam');
         $producten->product_prijs = $request->input('Prijs');
-        $producten->product_foto = $request->input('Foto');
+        $producten->product_foto = $fileNameToStore;
         $producten->product_categorie = $request->input('Categorie');
         $producten->product_omschrijving = $request->input('Omschrijving');
         $producten->save();
@@ -77,7 +91,11 @@ class productController extends Controller
     public function edit($id)
     {
         $producten = productModel::find($id);
-        return view('producten.edit')->with('producten', $producten);
+        if(Auth::check())
+        return view('/producten/.edit')->with('producten', $producten);
+        return redirect('/producten')-> with('error', 'Niet bevoegd');
+
+
     }
 
     /**
@@ -94,16 +112,27 @@ class productController extends Controller
             'Omschrijving' => 'required',
             'Prijs' => 'required',
             'Categorie' => 'required',
-            'Foto' => 'required'
+            'Foto' => 'image|nullable|max:1999'
         ]); 
+
+        // Foto upload
+        if($request->hasFile('Foto')){
+            $fileNameWithExt = $request->file('Foto')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('Foto')-> getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('Foto')->storeAs('public/cover_images', $fileNameToStore);
+        }
 
         // Nieuw product toevoegen
         $producten = productModel::find($id);
         $producten->product_naam = $request->input('Naam');
         $producten->product_prijs = $request->input('Prijs');
-        $producten->product_foto = $request->input('Foto');
         $producten->product_categorie = $request->input('Categorie');
         $producten->product_omschrijving = $request->input('Omschrijving');
+         if($request->hasFile('Foto')){
+             $producten->product_foto = $fileNameToStore;
+         }
         $producten->save();
 
         return redirect('/producten') ->with('Success', 'Product aangepast');
